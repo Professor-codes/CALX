@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('/public/bg-blueviolet.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: white;
+}
+
+.calculator-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.calculator {
+    background-color: black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    backdrop-filter: blur(10px);
+}
+
+.display {
+    position: relative;
+    color: rgb(255, 255, 255);
+    background: rgba(106, 66, 194, 0.2);
+    padding: 10px;
+    font-size: 24px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: right;
+    border: 1px solid rgb(106, 66, 194);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* CALX BUTTON */
+button {
+    padding: 14px 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: rgba(155, 126, 189, 0.2);
+    color: #ffffff;
+    transition: background 0.3s;
+    border: 1px solid rgb(155, 126, 189);
+}
+
+/* COPY BUTTON */
+.copy {
+    --button-bg: transparent;
+    --button-hover-bg: #464646;
+    --button-text-color: #CCCCCC;
+    --button-hover-text-color: #8bb9fe;
+    --button-border-radius: 10px;
+    --button-diameter: 36px;
+    --button-outline-width: 1px;
+    --button-outline-color: rgb(141, 141, 141);
+    --tooltip-bg: #f4f3f3;
+    --toolptip-border-radius: 4px;
+    --tooltip-font-family: Menlo, Roboto Mono, monospace;
+    --tooltip-font-size: 12px;
+    --tootip-text-color: rgb(50, 50, 50);
+    --tooltip-padding-x: 7px;
+    --tooltip-padding-y: 7px;
+    --tooltip-offset: 8px;
+
+    box-sizing: border-box;
+    width: var(--button-diameter);
+    height: var(--button-diameter);
+    border-radius: var(--button-border-radius);
+    color: var(--button-text-color);
+    background: var(--button-bg);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.tooltip {
+    position: absolute;
+    opacity: 0;
+    visibility: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font: var(--tooltip-font-size) var(--tooltip-font-family);
+    color: var(--tootip-text-color);
+    background: var(--tooltip-bg);
+    padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
+    border-radius: var(--toolptip-border-radius);
+    pointer-events: none;
+}
+
+.tooltip::before {
+    content: attr(data-text-initial);
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: calc(var(--tooltip-padding-y) / 2 * -1);
+    width: var(--tooltip-padding-y);
+    height: var(--tooltip-padding-y);
+    background: inherit;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    z-index: -999;
+}
+
+.copy:hover .tooltip,
+.copy:focus:not(:focus-visible) .tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: calc((100% + var(--tooltip-offset)) * -1);
+}
+
+.copy:focus:not(:focus-visible) .tooltip::before {
+    content: attr(data-text-end);
+}
+
+.copy svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkmark {
+    display: none;
+}
+
+.copy:focus:not(:focus-visible) .clipboard {
+    display: none;
+}
+
+.copy:focus:not(:focus-visible) .checkmark {
+    display: block;
+}
+
+.history {
+    margin-top: 20px;
+    width: 300px;
+    color: #ffffff;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.history h3 {
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+
+.history-heading {
+    display: flex;
+    align-items: center;
+    /* Align items vertically */
+    gap: 0.5rem;
+    /* Add spacing between the text and the icon */
+    font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.history ul {
+    list-style: none;
+    padding: 0;
+}
+
+.history li {
+    background: #f1f1f1;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background: rgba(255, 101, 0, 0.1);
+    border: 1px solid rgb(255, 101, 0);
+
+}
+
+.clear-history {
+    background: transparent;
+    margin-top: 10px;
+    padding: 0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 100;
+}
+
+.clear-history:hover {
+    text-decoration: underline;
+}
