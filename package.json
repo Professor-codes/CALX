@@ -37,8 +37,5 @@
   },
   "devDependencies": {
     "ajv": "^7.2.4"
-  },
-  "engines": {
-    "node": "23.4.0"
   }
 }
